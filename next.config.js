@@ -1,13 +1,8 @@
-// next.config.js
-const withMDX = require('@next/mdx')({
-  extension: /\.mdx?$/
-})
- 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Configure `pageExtensions` to include MDX files
-  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
-  // Optionally, add any other Next.js config below
-}
- 
-module.exports = withMDX(nextConfig)
+  reactStrictMode: true, // Enables React's Strict Mode
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md'], // Add 'md' if you still want to support Markdown files
+  // Add any other Next.js configuration options you need
+};
+
+module.exports = nextConfig;

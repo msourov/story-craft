@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import Navbar from "../components/navbar";
 import "./globals.css";
+import "@mantine/core/styles.css";
+
+import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 
 const inter = Poppins({ subsets: ["latin"], weight: "300" });
 
@@ -17,10 +20,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <ColorSchemeScript />
+      </head>
       <body className={inter.className}>
         <Navbar />
-        <main className="flex min-h-screen flex-col px-20 py-10">
-          {children}
+        <main className="flex min-h-screen flex-col">
+          <MantineProvider>{children}</MantineProvider>
         </main>
       </body>
     </html>
