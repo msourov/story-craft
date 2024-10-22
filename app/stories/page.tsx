@@ -1,17 +1,12 @@
-import React from "react";
-
 interface Story {
   _id: string;
   title: string;
-  // Add other fields as necessary
 }
 
 const StoriesPage = async () => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/api/stories`,
-    {
-      cache: "no-store", // Optional: to ensure fresh data on every request
-    }
+    { next: { revalidate: 3600 } }
   );
 
   if (!response.ok) {

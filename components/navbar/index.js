@@ -26,7 +26,7 @@ export default function Navbar() {
       className="flex flex-row flex-wrap justify-around px-20 py-4 bg-[#9CB380] text-[#212919]"
       style={{
         background:
-          "linear-gradient(60deg, rgba(133,148,114,1) 35%, rgba(199,172,146,1) 35%), rgb(133,148,114)", // Combined backgrounds
+          "linear-gradient(60deg, rgba(133,148,114,1) 35%, rgba(199,172,146,1) 35%), rgb(133,148,114)",
       }}
     >
       <Link href="/">
