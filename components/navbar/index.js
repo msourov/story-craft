@@ -23,10 +23,10 @@ export default function Navbar() {
 
   return (
     <nav
-      className="flex flex-row flex-wrap justify-around px-20 py-4 bg-[#9CB380] text-[#212919]"
+      className="flex flex-row flex-wrap justify-around px-20 py-4 text-white"
       style={{
         background:
-          "linear-gradient(60deg, rgba(133,148,114,1) 35%, rgba(199,172,146,1) 35%), rgb(133,148,114)",
+          "linear-gradient(60deg, rgba(70, 52, 75,1) 35%, rgba(199,172,146,1) 35%), rgb(133,148,114)",
       }}
     >
       <Link href="/">
@@ -38,7 +38,7 @@ export default function Navbar() {
             <Link
               href={item.path}
               className={`${
-                pathname === item.path ? "text-[#effcde] rounded-md" : ""
+                pathname === item.path ? "text-[#46344B] rounded-md" : ""
               }`}
             >
               {item.label}

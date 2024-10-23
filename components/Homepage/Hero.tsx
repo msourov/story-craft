@@ -8,8 +8,8 @@ import BrowseStories from "../Buttons/BrowseStories";
 const Hero = () => {
   return (
     <div
-      className="text-center gap-2 md:gap-8 lg:gap-0 px-8 py-8 md:py-16 lg:py-20 bg-[#859472] \
-    flex md:flex-row flex-col justify-around items-center"
+      className="text-center gap-2 md:gap-8 lg:gap-0 px-8 py-8 md:py-16 lg:py-20 bg-[#46344B] \
+    flex md:flex-row flex-col justify-around items-center text-yellow-500"
       // style={{
       //   background:
       //     "linear-gradient(60deg, rgba(199,172,146,1) 50%, rgba(133,148,114,1) 50%), rgb(133,148,114)", // Combined backgrounds
@@ -21,7 +21,7 @@ const Hero = () => {
           Want to talk about an interesting event, take a load off your chest,
           discuss your favorite topic?
         </p>
-        <p className="text-yellow-500 bg-gradient-to-bl">
+        <p className="text-[#F8C735] bg-gradient-to-bl">
           This is the platform for you!
         </p>
       </div>
