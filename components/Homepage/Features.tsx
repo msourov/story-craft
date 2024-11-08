@@ -1,5 +1,5 @@
 import { Story } from "@/app/types";
-import { Box, Group, Pill, PillGroup, Text } from "@mantine/core";
+import { Box, Pill, Text } from "@mantine/core";
 
 const Features = async () => {
   const response = await fetch(
@@ -7,19 +7,22 @@ const Features = async () => {
     { next: { revalidate: 604800 } }
   );
   const featuredStories: Story[] = await response.json();
-  console.log("featuredStories.slice(3)", featuredStories.slice(3));
   return (
     <Box
-      className=" text-[#330505] px-8 py-6 md:py-12 bg-[#94A89A] \
+      className=" text-[#330505] md:px-6 py-6 md:py-12 bg-[#94A89A] \
     flex flex-col justify-center items-center"
     >
       <Text fw="700" c="black" size="xl" mb={20}>
         Featured Stories
       </Text>
-      <Box className="flex justify-center w-[80%] flex-col lg:flex-row">
+      {/* <Divider w="50%" color="black" mb={10} /> */}
+      <Box className="flex justify-center gap-4 w-[90%] md:w-[80%] flex-col lg:flex-row">
         {featuredStories.slice(0, 3).map((item) => (
-          <Box key={item?._id.toString()} className="text-left px-8 py-4">
-            <Text c="dark" fw={700} className="text-center">
+          <Box
+            key={item?._id.toString()}
+            className="text-left px-4 md:px-6 py-4 border bg-[#D9D1C0] border-yellow-800 shadow-lg border-b-8"
+          >
+            <Text c="#3A2449" fw={900} mb={10} className="sm:text-center">
               {item.title}
             </Text>
             <Text>{item.content}</Text>

@@ -24,10 +24,10 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body className={inter.className}>
-        <Navbar />
-        <main className="flex min-h-screen flex-col">
-          <MantineProvider>{children}</MantineProvider>
-        </main>
+        <MantineProvider withGlobalClasses>
+          <Navbar />
+          <main className="flex min-h-screen flex-col">{children}</main>
+        </MantineProvider>
       </body>
     </html>
   );

@@ -6,7 +6,6 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(request: NextRequest) {
   try {
     const collection = await getCollection("stories");
-    console.log(request.nextUrl.searchParams);
     const url = request.nextUrl.searchParams;
     const featured = url.get("featured");
     const sortParam = url.get("sort");
@@ -37,7 +36,6 @@ export async function GET(request: NextRequest) {
       updatedAt: story.updatedAt as Date,
       popularity: story.popularity as number,
     }));
-
     return NextResponse.json(formattedStories);
   } catch (error) {
     console.error(error);

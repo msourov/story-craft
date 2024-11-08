@@ -44,8 +44,4 @@ next-env.d.ts
 .idea
 .vscode
 
-# Optional: Uncomment if using npm
-# package-lock.json
-
-# Optional: Uncomment if using yarn
-# yarn.lock
+/story_images
