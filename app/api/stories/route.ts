@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
     }
 
     const stories = await collection
-      .find(featured === "true" ? { featured: true } : {})
+      .find(featured === "true" ? { "featured": true } : {})
       .sort(sortOption || {})
       .toArray();
 

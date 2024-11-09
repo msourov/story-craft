@@ -1,5 +1,7 @@
 import { Story } from "@/app/types";
-import { Box, Pill, Text } from "@mantine/core";
+import { Box, Pill, SimpleGrid, Text } from "@mantine/core";
+import { StoryNavButton } from "./StoryNavButton";
+import { StoryImage } from "./StoryImage";
 
 const Features = async () => {
   const response = await fetch(
@@ -7,34 +9,51 @@ const Features = async () => {
     { next: { revalidate: 604800 } }
   );
   const featuredStories: Story[] = await response.json();
+  console.log("featuredStories", featuredStories.length);
+
   return (
     <Box
-      className=" text-[#330505] md:px-6 py-6 md:py-12 bg-[#94A89A] \
+      className=" text-[#330505] md:px-6 py-6 md:py-8 bg-[#94A89A] \
     flex flex-col justify-center items-center"
     >
-      <Text fw="700" c="black" size="xl" mb={20}>
+      <Text fw="700" size="xl" mb={20}>
         Featured Stories
       </Text>
-      {/* <Divider w="50%" color="black" mb={10} /> */}
-      <Box className="flex justify-center gap-4 w-[90%] md:w-[80%] flex-col lg:flex-row">
-        {featuredStories.slice(0, 3).map((item) => (
-          <Box
-            key={item?._id.toString()}
-            className="text-left px-4 md:px-6 py-4 border bg-[#D9D1C0] border-yellow-800 shadow-lg border-b-8"
-          >
-            <Text c="#3A2449" fw={900} mb={10} className="sm:text-center">
-              {item.title}
-            </Text>
-            <Text>{item.content}</Text>
-            <Text className="space-x-2" my={10}>
-              {item?.tags.map((tag, index) => (
-                <Pill key={`${tag}-${index}`}>{tag}</Pill>
-              ))}
-            </Text>
-            <Text fw="normal">{item.views} views</Text>{" "}
-            <Text fw="normal">{item.likes} likes</Text>{" "}
-          </Box>
-        ))}
+      <Box className="flex justify-center gap-4 w-[90%] lg:w-[80%] flex-col lg:flex-row">
+        <SimpleGrid
+          cols={{ base: 1, sm: 2, lg: 3 }}
+          spacing={{ base: 10, sm: "xl" }}
+          verticalSpacing={{ base: "md", sm: "xl" }}
+        >
+          {featuredStories.slice(0, 3).map((item) => (
+            <Box
+              key={item?._id.toString()}
+              className="text-left px-4 md:px-6 lg:px-8 py-4 bg-[#94A89A] border-rose-950 shadow-xl border-b-8"
+            >
+              <Text c="#3A2449" fw={900} mb={10} className="sm:text-center">
+                {item.title}
+              </Text>
+              <Box>
+                <StoryImage id={item._id.toString()} />
+              </Box>
+
+              <Text mt={20} lineClamp={3} className="block">
+                {item.content}
+              </Text>
+              <StoryNavButton id={item?._id.toString()} />
+              {/* <Button variant="subtle">read more...</Button> */}
+              <Box>
+                <Text className="space-x-2" my={10}>
+                  {item?.tags.map((tag, index) => (
+                    <Pill key={`${tag}-${index}`}>{tag}</Pill>
+                  ))}
+                </Text>
+                <Text fw="normal">{item.views} views</Text>{" "}
+                <Text fw="normal">{item.likes} likes</Text>{" "}
+              </Box>
+            </Box>
+          ))}
+        </SimpleGrid>
       </Box>
     </Box>
   );
