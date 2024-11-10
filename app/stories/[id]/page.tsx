@@ -1,20 +1,6 @@
+import { Story } from "@/app/types";
 import { StoryImage } from "@/components/Homepage/StoryImage";
 import { Text, Box } from "@mantine/core";
-import { ObjectId } from "mongodb";
-
-interface Story {
-  _id: ObjectId;
-  title: string;
-  content: string;
-  authorId: ObjectId;
-  tags: string[];
-  likes: number;
-  views: number;
-  featured: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-  popularity: number;
-}
 
 type StoryPageProps = {
   params: {
@@ -50,7 +36,7 @@ const StoryPage = async ({ params }: StoryPageProps) => {
       <Text fw="700" size="xl">
         {story.title}
       </Text>
-      <StoryImage id={id} />
+      <StoryImage id={id} width={600} height={400} />
       <Text mt={20} className="lg:w-[70%]">
         {story.content}
       </Text>

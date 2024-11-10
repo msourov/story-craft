@@ -4,14 +4,20 @@ import { CldImage } from "next-cloudinary";
 
 type StoryImagesProps = {
   id: string;
+  width: number;
+  height: number;
 };
 
-export const StoryImage = ({ id }: StoryImagesProps) => {
+export const StoryImage = ({
+  id,
+  width = 600,
+  height = 400,
+}: StoryImagesProps) => {
   return (
     <CldImage
       src={`story-craft/${id}`}
-      width={600}
-      height={400}
+      width={width}
+      height={height}
       crop="fill"
       gravity="auto"
       alt={`image_id${id}`}

@@ -9,11 +9,10 @@ const Features = async () => {
     { next: { revalidate: 604800 } }
   );
   const featuredStories: Story[] = await response.json();
-  console.log("featuredStories", featuredStories.length);
 
   return (
     <Box
-      className=" text-[#330505] md:px-6 py-6 md:py-8 bg-[#94A89A] \
+      className=" text-[#330505] md:px-6 py-6 md:py-8 bg-[#F5F3F8] \
     flex flex-col justify-center items-center"
     >
       <Text fw="700" size="xl" mb={20}>
@@ -28,12 +27,12 @@ const Features = async () => {
           {featuredStories.slice(0, 3).map((item) => (
             <Box
               key={item?._id.toString()}
-              className="text-left px-4 md:px-6 lg:px-8 py-4 bg-[#94A89A] border-rose-950 shadow-xl border-b-8"
+              className="text-left px-4 md:px-6 lg:px-8 py-4 bg-[#ECE8F3] rounded-md border-rose-950 shadow-xl border-b-8"
             >
               <Text c="#3A2449" fw={900} mb={10} className="sm:text-center">
                 {item.title}
               </Text>
-              <Box>
+              <Box className="rounded-lg overflow-hidden shadow-sm">
                 <StoryImage id={item._id.toString()} />
               </Box>
 

@@ -7,8 +7,15 @@ export async function GET(request: NextRequest) {
   try {
     const collection = await getCollection("stories");
     const url = request.nextUrl.searchParams;
+    const genre = url.get("genre");
     const featured = url.get("featured");
     const sortParam = url.get("sort");
+
+    if (genre) {
+      const genres = await collection.distinct("tags");
+      console.log(genres, "returning genres");
+      return NextResponse.json({ status: true, data: genres });
+    }
 
     let sortOption: Record<string, 1 | -1> | null = null;
 
@@ -19,7 +26,7 @@ export async function GET(request: NextRequest) {
     }
 
     const stories = await collection
-      .find(featured === "true" ? { "featured": true } : {})
+      .find(featured === "true" ? { featured: true } : {})
       .sort(sortOption || {})
       .toArray();
 

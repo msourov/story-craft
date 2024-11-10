@@ -1,7 +1,6 @@
-interface Story {
-  _id: string;
-  title: string;
-}
+import { Box, Card, Text } from "@mantine/core";
+import { Story } from "../types";
+import { StoryImage } from "@/components/Homepage/StoryImage";
 
 const StoriesPage = async () => {
   const response = await fetch(
@@ -18,11 +17,25 @@ const StoriesPage = async () => {
   return (
     <div className="flex justify-center">
       {/* <div className="w-[20%] border border-b-2 h-screen"></div> */}
-      <ul className="flex flex-col gap-4 py-10 text-center">
+      <Box className="flex flex-col w-[90%] gap-4">
         {stories.map((story) => (
-          <li key={story._id}>{story.title}</li>
+          <Card key={story._id.toString()} withBorder w="full" px={30} py={20}>
+            <Text className="text-center" c="dimmed" fw="bold" mb={10}>
+              {story.title}
+            </Text>
+            <Box className="flex gap-6">
+              <div className="flex-shrink-0">
+                <StoryImage
+                  id={story._id.toString()}
+                  width={240}
+                  height={160}
+                />
+              </div>
+              <Box>{story.content}</Box>
+            </Box>
+          </Card>
         ))}
-      </ul>
+      </Box>
     </div>
   );
 };

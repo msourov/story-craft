@@ -1,6 +1,5 @@
 import dotenv from "dotenv";
 import { MongoClient } from "mongodb";
-import { faker } from "@faker-js/faker";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 
